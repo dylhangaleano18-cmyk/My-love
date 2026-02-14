@@ -1,0 +1,161 @@
+/* =========================
+   CONFIG GENERAL
+========================= */
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+    background: url('https://img.freepik.com/vector-gratis/tema-san-valentin-corazones-cielo-rosa_1308-38030.jpg?semt=ais_hybrid&w=740')
+    no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* =========================
+   MENSAJE
+========================= */
+
+.message {
+    background: rgba(255,255,255,0.85);
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 28px;
+    color: #d63384;
+    font-weight: bold;
+    margin-bottom: 25px;
+    z-index: 10;
+    animation: bounce 1.5s infinite;
+    
+}
+
+@keyframes bounce {
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-12px); }
+}
+
+/* =========================
+   BOTÓN
+========================= */
+
+.main-button {
+    z-index: 50;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #ff6f9f;
+    color: white;
+    transition: 0.3s ease;
+
+    position: absolute; 
+    bottom: 20%; /* Ajusta este número para subirlo o bajarlo (0% es el suelo) */
+    left: 50%;   /* Lo centra horizontalmente */
+    width: 150px; /* Dale un ancho fijo al botón */
+    margin-left: -75px; /* La mitad exacta del ancho en negativo */
+    
+   
+}
+
+.main-button:hover {
+    transform: scale(1.1);
+    background-color: #ff3d84;
+}
+
+/* =========================
+   BURBUJAS
+========================= */
+
+#bubbles-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 40;
+}
+
+.text-bubble {
+    position: absolute;
+    font-size: 18px;
+    font-family: cursive;
+    color: #d63384;
+    background: rgba(255,255,255,0.9);
+    padding: 10px 20px;
+    border-radius: 25px;
+    animation: floatText 8s ease-in-out forwards;
+    white-space: nowrap;
+}
+
+@keyframes floatText {
+    0% { opacity:0; transform: scale(0.5) translateY(0); }
+    50% { opacity:1; transform: scale(1.2) translateY(-50px); }
+    100% { opacity:0; transform: scale(1) translateY(-100px); }
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0);
+    transition: 1.5s ease;
+    z-index: 5;
+}
+
+#overlay.active {
+    background: rgba(0,0,0,0.6);
+}
+
+/* =========================
+   FOTOS
+========================= */
+
+#photoContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 30px;
+    opacity: 0;
+    transition: 1.5s ease;
+    z-index: 20;
+}
+
+#photoContainer.show {
+    opacity: 1;
+}
+
+.love-photo {
+    width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255,105,180,0.7);
+    transform: scale(0);
+    transition: 1s ease;
+}
+
+#photoContainer.show .love-photo {
+    transform: scale(1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:768px){
+    .message{ font-size:22px; }
+    .love-photo{ width:140px; }
+}
